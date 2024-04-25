@@ -7,10 +7,10 @@ import { BooksService } from '../books.service';
   styleUrls: ['./books-list.component.css'],
 })
 export class BooksListComponent implements OnInit {
-  bookList;
+  // bookList;
   constructor(private booksService: BooksService) {
     // console.log(this.books);
-    this.bookList = this.booksService.getBooksList();
+    // this.bookList = this.
   }
   ngOnInit() {}
 }

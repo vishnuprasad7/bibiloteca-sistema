@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BooksService } from '../books.service';
+import { bookGenreTypes } from '../books.model';
 
 @Component({
   selector: 'books-inventory',
@@ -8,7 +9,10 @@ import { BooksService } from '../books.service';
   styleUrls: ['./books-inventory.component.css'],
 })
 export class BooksInventoryComponent implements OnInit {
-  constructor(private booksService: BooksService) {}
+  bookGenreTypes;
+  constructor(private booksService: BooksService) {
+    this.bookGenreTypes = bookGenreTypes;
+  }
   addbooksForm = new FormGroup({
     bookTitle: new FormControl(),
     bookAuthor: new FormControl(),

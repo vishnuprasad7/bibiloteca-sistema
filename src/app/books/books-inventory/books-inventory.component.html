@@ -31,15 +31,7 @@
                 </div>
                 <div class="col-9">
                     <select class="form-select" formControlName='bookGenre' multiple aria-label="Default select example">
-                        <option value="1">Fiction</option>
-                        <option value="2">Epic</option>
-                        <option value="3">Historical Fiction</option>
-                        <option value="4">Magical Realism</option>
-                        <option value="5">Literary Fiction</option>
-                        <option value="6">Adventure</option>
-                        <option value="7">Fantasy</option>
-                        <option value="8">Coming-of-age</option>
-
+                        <option *ngFor='let genre of bookGenreTypes' [value]='genre.value'>{{genre.title}}</option>
                     </select>
                 </div>
         </div>
@@ -48,9 +40,7 @@
                 <label for="book_description" class="col-form-label">Description</label>
                 </div>
                 <div class="col-9">
-                
                         <textarea formControlName='bookDescription' class="form-control" id="book_description" rows="3"></textarea>
-                    
                 </div>
         </div>
         <div class="row g-3 m-2 align-items-center">
