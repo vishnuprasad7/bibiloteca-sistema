@@ -4,11 +4,19 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { BooksInventoryComponent } from './books-inventory/books-inventory.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BooksService } from './books.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryBooksApiService } from './in-memory-books.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [BooksListComponent, BooksInventoryComponent],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryBooksApiService),
+  ],
   exports: [CommonModule, ReactiveFormsModule],
-  providers: [BooksService],
+  providers: [BooksService, InMemoryBooksApiService],
 })
 export class BooksModule {}
