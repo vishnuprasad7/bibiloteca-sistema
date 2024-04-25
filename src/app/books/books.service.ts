@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IBooks } from './books.model';
+import { Book, IBooks } from './books.model';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 
 @Injectable({
@@ -19,7 +19,15 @@ export class BooksService {
       }),
     );
   }
-  addBooksToInventory(book: any) {
-    // this.books.push(book);
+  createBook(book: Book): Observable<Book> {
+    return this.http.post<Book>(this.booksUrl, book).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        return throwError(error);
+      }),
+    );
+  }
+  deleteBook(id: number): Observable<any> {
+    return this.http.delete(this.booksUrl + id);
   }
 }

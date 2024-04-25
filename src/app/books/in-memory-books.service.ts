@@ -9,7 +9,7 @@ export class InMemoryBooksApiService implements InMemoryDbService {
     let books: IBooks[] = [
       {
         id: 1,
-        title: 'To Kill a MockingJay',
+        title: 'To Kill a MockingBird',
         author: 'Harper Lee',
         publication_year: 1960,
         genre: ['Fiction', 'Classic'],

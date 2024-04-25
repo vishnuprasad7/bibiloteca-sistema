@@ -7,6 +7,10 @@ export interface IBooks {
   description: string;
   cover_image: string;
 }
+export interface Book {
+  id: number;
+  title: string;
+}
 export const bookGenreTypes = [
   { title: 'Fiction', value: 'fiction' },
   { title: 'Epic', value: 'epic' },
