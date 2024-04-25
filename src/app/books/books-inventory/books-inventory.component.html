@@ -1,0 +1,63 @@
+
+  <div class="container-fluid m-2">
+    <form [formGroup]="addbooksForm" (ngSubmit)="saveBooks()" class="row">
+        <div class="row g-3 m-2 align-items-center">
+            <div class="col-3">
+                <label for="book_title" class="col-form-label">Book Title</label>
+            </div>
+            <div class="col-9">
+                <input type="text" formControlName='bookTitle' id="book_title" class="form-control" >
+            </div>
+        </div>
+        <div class="row g-3 m-2 align-items-center">
+            <div class="col-3">
+                <label for="book_author" class="col-form-label">Book Author</label>
+                </div>
+                <div class="col-9">
+                <input type="text" formControlName='bookAuthor' id="book_author" class="form-control" >
+                </div>
+        </div>
+        <div class="row g-3 m-2 align-items-center">
+            <div class="col-3">
+                <label for="book_yop" class="col-form-label">Publication Year</label>
+                </div>
+                <div class="col-9">
+                <input type="number" formControlName='bookYoP' id="book_yop" class="form-control" >
+                </div>
+        </div>
+        <div class="row g-3 m-2 align-items-center">
+            <div class="col-3">
+                <label for="book_genre" class="col-form-label">Genre</label>
+                </div>
+                <div class="col-9">
+                    <select class="form-select" formControlName='bookGenre' multiple aria-label="Default select example">
+                        <option value="1">Fiction</option>
+                        <option value="2">Epic</option>
+                        <option value="3">Historical Fiction</option>
+                        <option value="4">Magical Realism</option>
+                        <option value="5">Literary Fiction</option>
+                        <option value="6">Adventure</option>
+                        <option value="7">Fantasy</option>
+                        <option value="8">Coming-of-age</option>
+
+                    </select>
+                </div>
+        </div>
+        <div class="row g-3 m-2 align-items-center">
+            <div class="col-3">
+                <label for="book_description" class="col-form-label">Description</label>
+                </div>
+                <div class="col-9">
+                
+                        <textarea formControlName='bookDescription' class="form-control" id="book_description" rows="3"></textarea>
+                    
+                </div>
+        </div>
+        <div class="row g-3 m-2 align-items-center">
+            <div class="col">
+                <button type="submit" class="btn btn-primary mb-3">Add Book</button>
+            </div>
+
+        </div>
+    </form>
+</div>
