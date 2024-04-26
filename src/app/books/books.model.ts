@@ -5,7 +5,6 @@ export interface IBooks {
   publication_year: number;
   genre: [string, string];
   description: string;
-  cover_image: string;
 }
 export interface Book {
   id: number;

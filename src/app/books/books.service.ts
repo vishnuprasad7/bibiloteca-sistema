@@ -16,15 +16,15 @@ export class BooksService {
       catchError((error: HttpErrorResponse) => {
         console.error(error);
         return throwError(error);
-      }),
+      })
     );
   }
   createBook(book: Book): Observable<Book> {
-    return this.http.post<Book>(this.booksUrl, book).pipe(
+    return this.http.put<Book>(this.booksUrl, book).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error(error);
         return throwError(error);
-      }),
+      })
     );
   }
   deleteBook(id: number): Observable<any> {

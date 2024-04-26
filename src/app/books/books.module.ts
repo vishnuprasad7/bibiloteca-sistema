@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BooksListComponent } from './books-list/books-list.component';
 import { BooksInventoryComponent } from './books-inventory/books-inventory.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BooksService } from './books.service';
@@ -9,7 +8,7 @@ import { InMemoryBooksApiService } from './in-memory-books.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [BooksListComponent, BooksInventoryComponent],
+  declarations: [BooksInventoryComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

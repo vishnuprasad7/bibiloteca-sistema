@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BooksService } from '../books.service';
-import { Book, bookGenreTypes } from '../books.model';
+import { Book, IBooks, bookGenreTypes } from '../books.model';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Component({
@@ -15,10 +15,9 @@ export class BooksInventoryComponent implements OnInit {
     name: '',
     id: 0,
   };
-  constructor(
-    private booksService: BooksService,
-    private route: Router,
-  ) {
+  books: IBooks[];
+  constructor(private booksService: BooksService, private route: Router) {
+    this.books = [];
     this.bookGenreTypes = bookGenreTypes;
   }
   addbooksForm = new FormGroup({
@@ -29,21 +28,30 @@ export class BooksInventoryComponent implements OnInit {
     bookDescription: new FormControl(),
   });
 
-  ngOnInit() {}
-  saveBooks() {
+  private getProducts() {
+    this.booksService.getBooks().subscribe((books) => (this.books = books));
+  }
+  /*
+getting ID of the last element in the books array object
+ */
+  ngOnInit() {
+    this.getProducts();
+    this.booksService.getBooks().subscribe((book) => {
+      this.book.id = book[book.length - 1].id;
+    });
+  }
+  addBook() {
     console.log(typeof this.addbooksForm.value);
     const data = {
       title: this.addbooksForm.value.bookTitle,
-      id: Math.random(),
+      id: ++this.book.id,
       author: this.addbooksForm.value.bookAuthor,
-      yop: this.addbooksForm.value.bookYoP,
+      publication_year: this.addbooksForm.value.bookYoP,
       genre: this.addbooksForm.value.bookGenre,
       description: this.addbooksForm.value.bookDescription,
-      cover_image: 'https://fakeimg.pl/667x600/cc6600',
+      // cover_image: 'https://fakeimg.pl/667x600/cc6600',
     };
     this.booksService.createBook(data).subscribe((response) => {
-      console.log(response);
-      this.route.navigate(['/books-list']);
       this.booksService.getBooks();
     });
   }

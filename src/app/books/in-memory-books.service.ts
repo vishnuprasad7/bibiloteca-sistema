@@ -15,7 +15,6 @@ export class InMemoryBooksApiService implements InMemoryDbService {
         genre: ['Fiction', 'Classic'],
         description:
           'A classic novel depicting racial injustice in the American South.',
-        cover_image: 'https://fakeimg.pl/667x600/cc6600',
       },
       {
         id: 2,
@@ -24,7 +23,6 @@ export class InMemoryBooksApiService implements InMemoryDbService {
         publication_year: 1949,
         genre: ['Dystopian', 'Science Fiction'],
         description: 'A dystopian novel portraying a totalitarian society.',
-        cover_image: 'https://fakeimg.pl/667x600/cc6600',
       },
       {
         id: 3,
@@ -34,7 +32,6 @@ export class InMemoryBooksApiService implements InMemoryDbService {
         genre: ['Classic', 'Romance'],
         description:
           'A classic novel exploring themes of love, marriage, and social norms.',
-        cover_image: 'https://fakeimg.pl/667x600/cc6600',
       },
       {
         id: 4,
@@ -44,7 +41,6 @@ export class InMemoryBooksApiService implements InMemoryDbService {
         genre: ['Fiction', 'Classic'],
         description:
           'A tale of the American Dream, wealth, and love during the Roaring Twenties.',
-        cover_image: 'https://fakeimg.pl/667x600/cc6600',
       },
       {
         id: 5,
@@ -54,7 +50,6 @@ export class InMemoryBooksApiService implements InMemoryDbService {
         genre: ['Fiction', 'Adventure'],
         description:
           "The epic tale of Captain Ahab's obsession with the white whale.",
-        cover_image: 'https://fakeimg.pl/667x600/cc6600',
       },
       {
         id: 6,
@@ -64,7 +59,6 @@ export class InMemoryBooksApiService implements InMemoryDbService {
         genre: ['Fantasy', 'Adventure'],
         description:
           'An epic fantasy saga about the quest to destroy the One Ring.',
-        cover_image: 'https://fakeimg.pl/667x600/cc6600',
       },
       {
         id: 7,
@@ -74,7 +68,6 @@ export class InMemoryBooksApiService implements InMemoryDbService {
         genre: ['Fiction', 'Coming-of-age'],
         description:
           "A classic coming-of-age novel following Holden Caulfield's journey.",
-        cover_image: 'https://fakeimg.pl/667x600/cc6600',
       },
       {
         id: 8,
@@ -84,7 +77,6 @@ export class InMemoryBooksApiService implements InMemoryDbService {
         genre: ['Fantasy', 'Adventure'],
         description:
           "The prequel to The Lord of the Rings, following Bilbo Baggins' journey.",
-        cover_image: 'https://fakeimg.pl/667x600/cc6600',
       },
       {
         id: 9,
@@ -94,7 +86,6 @@ export class InMemoryBooksApiService implements InMemoryDbService {
         genre: ['Magical Realism', 'Literary Fiction'],
         description:
           'A multi-generational saga of the Buendía family in the fictional town of Macondo.',
-        cover_image: 'https://fakeimg.pl/667x600/cc6600',
       },
       {
         id: 10,
@@ -104,7 +95,6 @@ export class InMemoryBooksApiService implements InMemoryDbService {
         genre: ['Historical Fiction', 'Epic'],
         description:
           'A monumental work depicting the events of Russian society during the Napoleonic era.',
-        cover_image: 'https://fakeimg.pl/667x600/cc6600',
       },
     ];
     return { books };
