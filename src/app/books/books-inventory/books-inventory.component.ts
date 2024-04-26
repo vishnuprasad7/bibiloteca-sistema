@@ -58,9 +58,9 @@ getting ID of the last element in the books array object
 
   removeBook(book: Book) {
     const id = book.id;
-    this.booksService
-      .deleteBook(id)
-      .subscribe((product) => console.log(product));
+    this.booksService.deleteBook(id).subscribe((book) => {
+      book = {};
+    });
     this.booksService.getBooks();
   }
 }

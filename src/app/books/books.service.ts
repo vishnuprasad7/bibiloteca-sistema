@@ -20,7 +20,7 @@ export class BooksService {
     );
   }
   createBook(book: Book): Observable<Book> {
-    return this.http.put<Book>(this.booksUrl, book).pipe(
+    return this.http.post<Book>(this.booksUrl, book).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error(error);
         return throwError(error);
