@@ -27,6 +27,9 @@ export class BooksService {
       })
     );
   }
+  editBook(book: Book): Observable<any> {
+    return this.http.put(this.booksUrl + book.id, book);
+  }
   deleteBook(id: number): Observable<any> {
     return this.http.delete(this.booksUrl + id);
   }
