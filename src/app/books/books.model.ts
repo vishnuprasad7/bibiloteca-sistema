@@ -3,13 +3,10 @@ export interface IBooks {
   title: string;
   author: string;
   publication_year: number;
-  genre: [string, string];
+  genre: string[];
   description: string;
 }
-export interface Book {
-  id: number;
-  title: string;
-}
+
 export const bookGenreTypes = [
   { title: 'Fiction', value: 'fiction' },
   { title: 'Epic', value: 'epic' },
@@ -20,3 +17,8 @@ export const bookGenreTypes = [
   { title: 'Fantasy', value: 'fantasy' },
   { title: 'Coming-of-age', value: 'coming-of-age' },
 ];
+
+export interface BookResolved {
+  book: IBooks;
+  error?: any;
+}

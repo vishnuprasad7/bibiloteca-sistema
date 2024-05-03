@@ -38,15 +38,18 @@
             <a class="nav-link" href="#">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['books-list']"
-              >Books Inventory</a
+            <a class="nav-link" [routerLink]="['books']">Books List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/books', 0, 'edit']"
+              >Add Book</a
             >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About Us</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
+        <!-- <form class="d-flex" role="search">
           <input
             class="form-control me-2"
             type="search"
@@ -54,7 +57,18 @@
             aria-label="Search"
           />
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> -->
+      </div>
+      <div class="form-check form-switch ms-2 sm-0">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          (change)="toggleTheme($event)"
+          id="flexSwitchCheckDefault"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault">{{
+          themeMode
+        }}</label>
       </div>
     </div>
   </nav>

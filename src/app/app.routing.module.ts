@@ -1,13 +1,14 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-
-import { BooksInventoryComponent } from './books/books-inventory/books-inventory.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: 'books-inventory', component: BooksInventoryComponent },
-      { path: '', redirectTo: 'books-inventory', pathMatch: 'full' },
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '**', component: PageNotFoundComponent },
     ]),
   ],
   exports: [RouterModule],

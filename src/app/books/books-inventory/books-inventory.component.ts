@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BooksService } from '../books.service';
-import { Book, IBooks, bookGenreTypes } from '../books.model';
+import { IBooks, bookGenreTypes } from '../books.model';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { InMemoryBooksApiService } from '../in-memory-books.service';
 
@@ -56,46 +56,46 @@ getting ID of the last element in the books array object
       description: this.addbooksForm.value.bookDescription,
       // cover_image: 'https://fakeimg.pl/667x600/cc6600',
     };
-    this.booksService.createBook(data).subscribe((response) => {
-      this.getProducts();
-      this.showAllBooks();
-      this.resetValues();
-    });
+    // this.booksService.createBook(data).subscribe((response) => {
+    //   this.getProducts();
+    //   this.showAllBooks();
+    //   this.resetValues();
+    // });
   }
   resetValues() {
     this.addbooksForm.reset();
   }
 
-  removeBook(book: Book) {
-    const id = book.id;
-    this.booksService.deleteBook(id).subscribe((book) => {
-      const index = this.books.findIndex((i: any) => i.id === id);
-      if (index !== -1) {
-        const deletedItem = this.books.splice(index, 1)[0];
-        console.log(deletedItem);
-      } else {
-        console.log('Item Not found');
-      }
-      // this.showAllBooks();
-    });
-  }
-  editBook(book: Book) {
-    const id = book.id;
-    const updatedItem = book;
-    this.booksService.editBook(this.book).subscribe((response) => {
-      console.log(response);
-      const index = this.books.findIndex((i: any) => i.id === id);
-      if (index !== -1) {
-        // this.addbooksForm.patchValue(updatedItem);
-        // this.books[index] = { ...this.books[index], ...updatedItem };
-        console.log('updated');
-      } else {
-        console.log('not updated');
-      }
-    });
-    // this.getProducts();
-    // this.resetValues();
-  }
+  // removeBook(book: Book) {
+  //   const id = book.id;
+  //   this.booksService.deleteBook(id).subscribe((book) => {
+  //     const index = this.books.findIndex((i: any) => i.id === id);
+  //     if (index !== -1) {
+  //       const deletedItem = this.books.splice(index, 1)[0];
+  //       console.log(deletedItem);
+  //     } else {
+  //       console.log('Item Not found');
+  //     }
+  //     // this.showAllBooks();
+  //   });
+  // }
+  // editBook(book: Book) {
+  //   const id = book.id;
+  //   const updatedItem = book;
+  //   // this.booksService.editBook(this.book).subscribe((response) => {
+  //   //   console.log(response);
+  //   //   const index = this.books.findIndex((i: any) => i.id === id);
+  //   //   if (index !== -1) {
+  //   //     // this.addbooksForm.patchValue(updatedItem);
+  //   //     // this.books[index] = { ...this.books[index], ...updatedItem };
+  //   //     console.log('updated');
+  //   //   } else {
+  //   //     console.log('not updated');
+  //   //   }
+  //   // });
+  //   // this.getProducts();
+  //   // this.resetValues();
+  // }
   showAllBooks() {
     this.showBookList = true;
     this.booksService.getBooks();
