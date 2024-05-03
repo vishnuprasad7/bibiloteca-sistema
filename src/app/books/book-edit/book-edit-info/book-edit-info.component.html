@@ -1,0 +1,74 @@
+<div class="container">
+  <form novalidate #bookForm="ngForm">
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label" for="bookTitleId"
+        >Book Title</label
+      >
+      <div class="col-md-8">
+        <input
+          class="form-control"
+          id="bookTitleId"
+          type="text"
+          placeholder="Title (required)"
+          required
+          minlength="3"
+          [ngModel]="book?.title"
+          name="title"
+          #bookTitleVar="ngModel"
+        />
+        <span class="invalid-feedback">
+          <span *ngIf="bookTitleVar.errors?.['required']">
+            Book title is required.
+          </span>
+          <span *ngIf="bookTitleVar.errors?.['required']">
+            Book title must be at least three characters.
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label" for="bookAuthorID">Author</label>
+      <div class="col-md-8">
+        <input
+          class="form-control"
+          id="bookAuthorID"
+          type="text"
+          placeholder="Code (required)"
+          required
+          [ngModel]="book?.author"
+          name="author"
+          #bookAuthorVar="ngModel"
+          [ngClass]="{
+            'is-invalid':
+              (bookAuthorVar.touched || bookAuthorVar.dirty) &&
+              !bookAuthorVar.valid
+          }"
+        />
+        <span class="invalid-feedback">
+          <span *ngIf="bookAuthorVar.errors?.['required']">
+            Book Author is required.
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-md-2 col-form-label" for="descriptionId"
+        >Description</label
+      >
+      <div class="col-md-8">
+        <textarea
+          class="form-control"
+          id="descriptionId"
+          placeholder="Description"
+          rows="3"
+          [ngModel]="book?.description"
+          name="description"
+        ></textarea>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>

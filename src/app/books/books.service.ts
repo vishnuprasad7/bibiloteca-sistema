@@ -1,13 +1,17 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IBooks } from './books.model';
-import { Observable, catchError, of, retry, tap, throwError } from 'rxjs';
+import { Observable, catchError, map, of, retry, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BooksService {
-  private booksUrl = 'api/books/';
+  private booksUrl = '/api/books';
   constructor(private http: HttpClient) {}
 
   getBooks(): Observable<IBooks[]> {
@@ -24,26 +28,40 @@ export class BooksService {
     if (id === 0) {
       return of(this.initializeBook());
     }
-    const url = `${this.booksUrl}${id}`;
+    const url = `${this.booksUrl}/${id}`;
     return this.http.get<IBooks>(url).pipe(
       tap((data) => console.log('Book: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
-  // createBook(book: Book): Observable<Book> {
-  //   return this.http.post<Book>(this.booksUrl, book).pipe(
-  //     catchError((error: HttpErrorResponse) => {
-  //       console.error(error);
-  //       return throwError(error);
-  //     })
-  //   );
-  // }
-  // editBook(book: Book): Observable<any> {
-  //   return this.http.put(this.booksUrl + book.id, book);
-  // }
-  deleteBook(id: number): Observable<any> {
-    return this.http.delete(this.booksUrl + id);
+  createBook(book: IBooks): Observable<IBooks> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    book.id = 0;
+    return this.http.post<IBooks>(this.booksUrl, book, { headers }).pipe(
+      tap((data) => console.log('createProduct: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  deleteBook(id: number): Observable<{}> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const url = `${this.booksUrl}/${id}`;
+    return this.http.delete<IBooks>(url, { headers }).pipe(
+      tap((data) => console.log('deleteBook: ' + id)),
+      catchError(this.handleError)
+    );
+  }
+
+  updateBook(book: IBooks): Observable<IBooks> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const url = `${this.booksUrl}/${book.id}`;
+    return this.http.put<IBooks>(url, book, { headers }).pipe(
+      tap(() => console.log('updateProduct: ' + book.id)),
+      // Return the book on an update
+      map(() => book),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(err: any): Observable<never> {

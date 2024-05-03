@@ -4,7 +4,6 @@ import { IBooks } from '../books.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'book-list',
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css',
 })

@@ -1,1 +1,41 @@
-<p>book-edit works!</p>
+<div class="card">
+  <div class="card-header">
+    {{ pageTitle }}
+  </div>
+
+  <div class="card-body" *ngIf="book">
+    <div class="wizard">
+      <a [routerLink]="['info']" routerLinkActive="active">
+        Basic Information<span></span>
+      </a>
+    </div>
+
+    <router-outlet></router-outlet>
+
+    <div class="row align-items-strech m-3 p-3">
+      <div class="col">
+        <button class="btn btn-primary" type="button" (click)="saveBook()">
+          Save
+        </button>
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          title="Cancel your edits"
+          [routerLink]="['/books']"
+        >
+          Cancel
+        </button>
+        <button
+          class="btn btn-outline-warning"
+          type="button"
+          title="Delete this book"
+          (click)="deleteBook()"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>

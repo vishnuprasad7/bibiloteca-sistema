@@ -10,32 +10,42 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BookResolver } from './books.resolver.service';
+import { BookEditComponent } from './book-edit/book-edit.component';
+import { BookEditInfoComponent } from './book-edit/book-edit-info/book-edit-info.component';
 
 @NgModule({
   declarations: [
     BooksInventoryComponent,
     BookListComponent,
     BookDetailComponent,
+    BookEditInfoComponent,
+    BookEditComponent,
   ],
   imports: [
-    BrowserModule,
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule,
     RouterModule.forChild([
       {
-        path: 'books',
+        path: '',
         component: BookListComponent,
       },
       {
-        path: 'books/:id',
+        path: ':id',
         component: BookDetailComponent,
         resolve: { resolvedData: BookResolver },
       },
+      {
+        path: ':id/edit',
+        component: BookEditComponent,
+        resolve: { resolvedData: BookResolver },
+        children: [
+          { path: '', redirectTo: 'info', pathMatch: 'full' },
+          { path: 'info', component: BookEditInfoComponent },
+        ],
+      },
     ]),
   ],
-  exports: [CommonModule, ReactiveFormsModule, RouterModule],
   providers: [BooksService, InMemoryBooksApiService],
 })
 export class BooksModule {}
