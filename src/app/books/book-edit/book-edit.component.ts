@@ -27,7 +27,6 @@ export class BookEditComponent {
   }
   set book(value: IBooks) {
     this.currentBook = value;
-    // Clone the object to retain a copy
     // this.originalBook = value ? { ...value } : [];
   }
 

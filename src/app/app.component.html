@@ -38,10 +38,18 @@
             <a class="nav-link" href="#">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/books']">Books List</a>
+            <a
+              class="nav-link"
+              [routerLink]="['/books']"
+              routerLinkActive="active"
+              >Books List</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/books', 0, 'edit']"
+            <a
+              class="nav-link"
+              [routerLink]="['/books', 0, 'edit']"
+              routerLinkActive="active"
               >Add Book</a
             >
           </li>
@@ -73,6 +81,6 @@
     </div>
   </nav>
 </div>
-<div class="">
-  <router-outlet></router-outlet>
+<div class="" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+  <router-outlet #o="outlet"></router-outlet>
 </div>

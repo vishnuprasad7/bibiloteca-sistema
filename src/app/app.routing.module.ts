@@ -5,17 +5,20 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 @NgModule({
   imports: [
-    RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent },
-      {
-        path: 'books',
-        data: { preload: false },
-        loadChildren: () =>
-          import('./books/books.module').then((m) => m.BooksModule),
-      },
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: '**', component: PageNotFoundComponent },
-    ]),
+    RouterModule.forRoot(
+      [
+        { path: 'welcome', component: WelcomeComponent },
+        {
+          path: 'books',
+          data: { preload: false },
+          loadChildren: () =>
+            import('./books/books.module').then((m) => m.BooksModule),
+        },
+        { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+        { path: '**', component: PageNotFoundComponent },
+      ],
+      { enableTracing: true }
+    ),
   ],
   exports: [RouterModule],
 })

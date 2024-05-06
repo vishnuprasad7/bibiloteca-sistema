@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { BookResolved, IBooks } from '../../books.model';
-import { BooksService } from '../../books.service';
+import { IBooks, bookGenreTypes } from '../../books.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -13,8 +12,11 @@ export class BookEditInfoComponent {
 
   errorMessage: string | undefined;
   book: IBooks | undefined;
+  bookGenreTypes;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {
+    this.bookGenreTypes = bookGenreTypes;
+  }
 
   ngOnInit(): void {
     this.route.parent?.data.subscribe((data) => {

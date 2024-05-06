@@ -1,6 +1,6 @@
 <div class="container">
   <form novalidate #bookForm="ngForm">
-    <div class="form-group row">
+    <div class="form-group row m-2">
       <label class="col-md-2 col-form-label" for="bookTitleId"
         >Book Title</label
       >
@@ -9,7 +9,7 @@
           class="form-control"
           id="bookTitleId"
           type="text"
-          placeholder="Title (required)"
+          placeholder="The Harry potter"
           required
           minlength="3"
           [ngModel]="book?.title"
@@ -27,14 +27,14 @@
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row m-2">
       <label class="col-md-2 col-form-label" for="bookAuthorID">Author</label>
       <div class="col-md-8">
         <input
           class="form-control"
           id="bookAuthorID"
           type="text"
-          placeholder="Code (required)"
+          placeholder="J.K. Rowling"
           required
           [ngModel]="book?.author"
           name="author"
@@ -52,8 +52,47 @@
         </span>
       </div>
     </div>
-
-    <div class="form-group row">
+    <div class="form-group row m-2">
+      <label class="col-md-2 col-form-label" for="yopId"
+        >Publication Year
+      </label>
+      <div class="col-md-8">
+        <input
+          class="form-control"
+          id="yopId"
+          type="number"
+          placeholder="1992"
+          required
+          [ngModel]="book?.publication_year"
+          name="yop"
+          #bookyopVar="ngModel"
+          [ngClass]="{
+            'is-invalid':
+              (bookyopVar.touched || bookyopVar.dirty) && !bookyopVar.valid
+          }"
+        />
+        <span class="invalid-feedback">
+          <span *ngIf="bookyopVar.errors?.['required']">
+            Book Publication year is required.
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group row m-2">
+      <label class="col-md-2 col-form-label" for="genre">Genre </label>
+      <div class="col-md-8">
+        <select
+          class="form-select"
+          multiple
+          aria-label="Default select example"
+        >
+          <option *ngFor="let genre of bookGenreTypes" [value]="genre.value">
+            {{ genre.title }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row m-2">
       <label class="col-md-2 col-form-label" for="descriptionId"
         >Description</label
       >

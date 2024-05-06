@@ -5,7 +5,11 @@
 
   <div class="card-body" *ngIf="book">
     <div class="wizard">
-      <a [routerLink]="['info']" routerLinkActive="active">
+      <a
+        [routerLink]="['info']"
+        routerLinkActive="active"
+        [ngClass]="{ 'fa fa-exclamation': !isValid('info') }"
+      >
         Basic Information<span></span>
       </a>
     </div>
