@@ -19,18 +19,15 @@
     },
     "build": {
       "name": "build",
-      "command": "ng build",
-      "runAtStart": false
+      "command": "ng build"
     },
     "test": {
       "name": "test",
-      "command": "ng test",
-      "runAtStart": false
+      "command": "ng test"
     },
     "help": {
       "name": "help",
-      "command": "ng help",
-      "runAtStart": false
+      "command": "ng help"
     },
     "install": {
       "name": "install dependencies",
