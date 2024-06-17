@@ -2,6 +2,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuard } from './user/auth.guard';
 
 @NgModule({
   imports: [
@@ -10,6 +11,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         { path: 'welcome', component: WelcomeComponent },
         {
           path: 'books',
+          canActivate: [AuthGuard],
           data: { preload: false },
           loadChildren: () =>
             import('./books/books.module').then((m) => m.BooksModule),
@@ -17,7 +19,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         { path: '', redirectTo: 'welcome', pathMatch: 'full' },
         { path: '**', component: PageNotFoundComponent },
       ],
-      { enableTracing: true }
+      { enableTracing: true },
     ),
   ],
   exports: [RouterModule],
