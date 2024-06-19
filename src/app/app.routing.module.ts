@@ -1,4 +1,8 @@
-import { RouterModule } from '@angular/router';
+import {
+  PreloadAllModules,
+  PreloadingStrategy,
+  RouterModule,
+} from '@angular/router';
 import { NgModule } from '@angular/core';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -11,7 +15,7 @@ import { AuthGuard } from './user/auth.guard';
         { path: 'welcome', component: WelcomeComponent },
         {
           path: 'books',
-          canActivate: [AuthGuard],
+          canLoad: [AuthGuard],
           data: { preload: false },
           loadChildren: () =>
             import('./books/books.module').then((m) => m.BooksModule),
@@ -19,7 +23,7 @@ import { AuthGuard } from './user/auth.guard';
         { path: '', redirectTo: 'welcome', pathMatch: 'full' },
         { path: '**', component: PageNotFoundComponent },
       ],
-      { enableTracing: true },
+      { enableTracing: true, preloadingStrategy: PreloadAllModules },
     ),
   ],
   exports: [RouterModule],
