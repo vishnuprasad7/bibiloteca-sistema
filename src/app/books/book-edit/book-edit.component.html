@@ -16,27 +16,31 @@
 
     <router-outlet></router-outlet>
 
+    <div class="d-flex mt-4 justify-content-evenly">
+      <button class="btn btn-primary" type="button" (click)="saveBook()">
+        Save
+      </button>
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        title="Cancel your edits"
+        [routerLink]="['/books']"
+      >
+        Cancel
+      </button>
+      <button
+        class="btn btn-outline-danger"
+        type="button"
+        title="Delete this book"
+        (click)="deleteBook()"
+      >
+        Delete
+      </button>
+    </div>
+   
     <div class="row align-items-strech m-3 p-3">
       <div class="col">
-        <button class="btn btn-primary" type="button" (click)="saveBook()">
-          Save
-        </button>
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          title="Cancel your edits"
-          [routerLink]="['/books']"
-        >
-          Cancel
-        </button>
-        <button
-          class="btn btn-outline-warning"
-          type="button"
-          title="Delete this book"
-          (click)="deleteBook()"
-        >
-          Delete
-        </button>
+        
       </div>
     </div>
   </div>
