@@ -11,9 +11,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertComponent } from './alert';
 
 @NgModule({
-  declarations: [AppComponent, WelcomeComponent, PageNotFoundComponent],
+  declarations: [AppComponent, WelcomeComponent, PageNotFoundComponent,AlertComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
