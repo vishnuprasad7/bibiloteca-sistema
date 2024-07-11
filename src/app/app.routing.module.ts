@@ -26,7 +26,7 @@ const usersModule = () =>
         { path: 'account', loadChildren: accountModule },
         {
           path: 'books',
-          canLoad: [AuthGuard],
+          canActivate: [AuthGuard],
           data: { preload: false },
           loadChildren: () =>
             import('./books/books.module').then((m) => m.BooksModule),

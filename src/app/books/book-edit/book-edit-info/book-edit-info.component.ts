@@ -24,6 +24,9 @@ export class BookEditInfoComponent {
         this.bookForm.reset();
       }
       this.book = data['resolvedData'].book;
+      if (!this.book) {
+        this.book = data.book;
+      }
     });
   }
 }

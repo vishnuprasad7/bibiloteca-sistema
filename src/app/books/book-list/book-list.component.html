@@ -63,7 +63,7 @@
             <td>
               <button
                 class="btn btn-outline-info btn-sm"
-                [routerLink]="[book.id, 'borrow']"
+                (click) = "borrowBooks()"
               >
                 Borrow
               </button>
@@ -71,7 +71,7 @@
             <td>
               <button
                 class="btn btn-outline-danger btn-sm"
-                [routerLink]="[book.id, 'return']"
+                (click) = "returnBooks()"
               >
                 Return
               </button>
