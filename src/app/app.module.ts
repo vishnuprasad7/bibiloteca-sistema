@@ -10,10 +10,18 @@ import { InMemoryBooksApiService } from './books/in-memory-books.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AlertComponent } from './alert';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor, fakeBackendProvider } from './_helpers';
 
 @NgModule({
-  declarations: [AppComponent, WelcomeComponent, PageNotFoundComponent],
+  declarations: [
+    AppComponent,
+    WelcomeComponent,
+    PageNotFoundComponent,
+    AlertComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -24,7 +32,13 @@ import { HttpClientModule } from '@angular/common/http';
     UserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

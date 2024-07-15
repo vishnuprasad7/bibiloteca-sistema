@@ -20,7 +20,7 @@ export class BooksService {
       catchError((error: HttpErrorResponse) => {
         console.error(error);
         return throwError(error);
-      })
+      }),
     );
   }
 
@@ -31,7 +31,7 @@ export class BooksService {
     const url = `${this.booksUrl}/${id}`;
     return this.http.get<IBooks>(url).pipe(
       tap((data) => console.log('Book: ' + JSON.stringify(data))),
-      catchError(this.handleError)
+      catchError(this.handleError),
     );
   }
 
@@ -39,8 +39,8 @@ export class BooksService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     book.id = 0;
     return this.http.post<IBooks>(this.booksUrl, book, { headers }).pipe(
-      tap((data) => console.log('createProduct: ' + JSON.stringify(data))),
-      catchError(this.handleError)
+      tap((data) => console.log('createBook: ' + JSON.stringify(data))),
+      catchError(this.handleError),
     );
   }
 
@@ -49,7 +49,7 @@ export class BooksService {
     const url = `${this.booksUrl}/${id}`;
     return this.http.delete<IBooks>(url, { headers }).pipe(
       tap((data) => console.log('deleteBook: ' + id)),
-      catchError(this.handleError)
+      catchError(this.handleError),
     );
   }
 
@@ -60,7 +60,7 @@ export class BooksService {
       tap(() => console.log('updateProduct: ' + book.id)),
       // Return the book on an update
       map(() => book),
-      catchError(this.handleError)
+      catchError(this.handleError),
     );
   }
 

@@ -33,7 +33,7 @@ export class BookEditComponent {
   constructor(
     private booksService: BooksService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -90,32 +90,26 @@ export class BookEditComponent {
   }
 
   saveBook(): void {
-    if (this.isValid()) {
-      if (this.book.id === 0) {
-        this.booksService.createBook(this.book).subscribe({
-          next: () =>
-            this.onSaveComplete(`The new ${this.book.title} was saved`),
-          error: (err) => (this.errorMessage = err),
-        });
-      } else {
-        this.booksService.updateBook(this.book).subscribe({
-          next: () =>
-            this.onSaveComplete(`The updated ${this.book.title} was saved`),
-          error: (err) => (this.errorMessage = err),
-        });
-      }
+    // if (this.isValid()) {
+    if (this.book.id === 0) {
+      this.booksService.createBook(this.book).subscribe({
+        next: () => this.onSaveComplete(`The new ${this.book.title} was saved`),
+        error: (err) => (this.errorMessage = err),
+      });
     } else {
-      this.errorMessage = 'Please correct the validation errors.';
+      this.booksService.updateBook(this.book).subscribe({
+        next: () =>
+          this.onSaveComplete(`The updated ${this.book.title} was saved`),
+        error: (err) => (this.errorMessage = err),
+      });
     }
+    // } else {
+    //   this.errorMessage = 'Please correct the validation errors.';
+    // }
   }
 
   onSaveComplete(message?: string): void {
-    // if (message) {
-    //   this.messageService.addMessage(message);
-    // }
     this.reset();
-
-    // Navigate back to the product list
     this.router.navigate(['/books']);
   }
 

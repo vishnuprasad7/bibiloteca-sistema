@@ -33,6 +33,8 @@
             <th scope="col">Author</th>
             <th scope="col" class="text-nowrap">Publication Year</th>
             <th scope="col">Description</th>
+            <th scope="col" colspan="3">Manage</th>
+
           </tr>
         </thead>
         <tbody>
@@ -56,6 +58,22 @@
                 [routerLink]="[book.id, 'edit']"
               >
                 Edit
+              </button>
+            </td>
+            <td>
+              <button
+                class="btn btn-outline-info btn-sm"
+                (click) = "borrowBooks()"
+              >
+                Borrow
+              </button>
+            </td>
+            <td>
+              <button
+                class="btn btn-outline-danger btn-sm"
+                (click) = "returnBooks()"
+              >
+                Return
               </button>
             </td>
           </tr>
